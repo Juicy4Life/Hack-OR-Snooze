@@ -75,6 +75,7 @@ class StoryList {
 
   async addStory( /* user, newStory */) {
     // UNIMPLEMENTED: complete this function!
+    //WE'RE WONDERING... make a post request to add new story to the API??
   }
 }
 
@@ -122,7 +123,7 @@ class User {
       method: "POST",
       data: { user: { username, password, name } },
     });
-
+    //let { user } = response.data ???
     return new User(
       {
         username: user.username,
@@ -147,7 +148,7 @@ class User {
       method: "POST",
       data: { user: { username, password } },
     });
-
+    //let { user } = {username, password, token, account create date, etc... }
     let { user } = response.data;
 
     return new User(
@@ -165,6 +166,7 @@ class User {
   /** When we already have credentials (token & username) for a user,
    *   we can log them in automatically. This function does that.
    */
+  //WE'RE WONDERING... ?? 
 
   static async loginViaStoredCredentials(token, username) {
     try {
@@ -186,6 +188,8 @@ class User {
         },
         token
       );
+
+      //What does this 'catch?' What is it looking for?
     } catch (err) {
       console.error("loginViaStoredCredentials failed", err);
       return null;
