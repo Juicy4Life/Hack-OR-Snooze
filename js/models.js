@@ -73,6 +73,7 @@ class StoryList {
    * Returns the new Story instance
    */
 //
+//WE'RE WONDERING... make a post request to add new story to the API??
   async addStory(currentUser, newStory) {
     // make a post request  we're going to make an obj and give it a 
     // {title, author, URL}
@@ -82,11 +83,11 @@ class StoryList {
       method: "POST",
       data: 
       {
-        "token": "currentUser.loginToken",
+        "token": currentUser.loginToken,
         "story": {
-          "author": "newStory.author",
-          "title": "newStory.title",
-          "url": "newStory.url"
+          "author": newStory.author,
+          "title": newStory.title,
+          "url": newStory.url
         }
       }
     });
@@ -95,12 +96,21 @@ console.log('addStory', response);
 
     // add it to story list
 
-    
-    //newStory = new Story()
+    let storyData = response.data.story   
+    console.log('we are returning x here ', storyData)   
+    let story = new Story(
+      {storyId: storyData.storyId, 
+        title: storyData.title, 
+        author: storyData.author, 
+        url: storyData.url, 
+        username: storyData.username, 
+        createdAt: storyData.createdAt })
+    //{ storyID, title, author, url, username, createdAt }
 
-    
+    console.log('returning the new story', story);
+    storyList.stories.push(story)
     // UNIMPLEMENTED: complete this function!
-    //WE'RE WONDERING... make a post request to add new story to the API??
+    
   }
 } 
 
