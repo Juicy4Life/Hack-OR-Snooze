@@ -35,11 +35,14 @@ function updateNavOnLogin() {
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-$body.on("click", "#nav-submit", navSubmitStoryClick);
+//CLick handler for navbar 'submit' button
+$('#nav-submit').on("click", navSubmitStoryClick);
 
+
+//** When a user clicks on "submit" in the navbar, shows the submission form */
 function navSubmitStoryClick(evt) {
   console.debug("navSubmitStoryClick", evt);
   hidePageComponents();
-  $submitForm.show();
-
+  $allStoriesList.show();
+  $submitForm.slideToggle();
 }

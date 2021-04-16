@@ -47,6 +47,29 @@
   </div>
 </nav>
 
+<!-- Story Submission form -->
+  <!-- change submission-form to story-submission-form -->
+  <form
+      action="#"
+      id="submission-form"
+      class="account-form hidden"
+      method="post">
+    <h4>Submit New Story</h4>
+    <div class="story-input">
+      <label for="author-name">name</label>
+      <input id="author-name" placeholder="author name">
+    </div>
+    <div class="title-name">
+      <label for="title-name">title</label>
+      <input id="title-name" placeholder="story title">
+    </div>
+    <div class="url-input">
+      <label for="url-input">url</label>
+      <input id="url-input" placeholder="story url">
+    </div>
+    <button type="submit">submit</button>
+  </form>
+  
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
 
@@ -98,27 +121,7 @@
     <button type="submit">create account</button>
   </form>
 
-  <!-- Story Submission form -->
-  <form
-      action="#"
-      id="story-form"
-      class="account-form hidden"
-      method="post">
-    <h4>Submit New Story</h4>
-    <div class="story-input">
-      <label for="author-name">name</label>
-      <input id="author-name" placeholder="author name"">
-    </div>
-    <div class="title-name">
-      <label for="title-name">title</label>
-      <input id="title-name" placeholder="story title">
-    </div>
-    <div class="url-input">
-      <label for="url-input">url</label>
-      <input id="url-input" placeholder="story url">
-    </div>
-    <button type="submit">submit</button>
-  </form>
+  
 </section>
 
 <!-- Library JS & our JS -->

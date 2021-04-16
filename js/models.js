@@ -72,8 +72,8 @@ class StoryList {
    *
    * Returns the new Story instance
    */
-//
-//WE'RE WONDERING... make a post request to add new story to the API??
+  //
+  //** Makes post request to API to add story and updates storyList with new story. */
   async addStory(currentUser, newStory) {
     // make a post request  we're going to make an obj and give it a 
     // {title, author, URL}
@@ -81,7 +81,7 @@ class StoryList {
     const response = await axios({
       url: `${BASE_URL}/stories`,
       method: "POST",
-      data: 
+      data:
       {
         "token": currentUser.loginToken,
         "story": {
@@ -91,28 +91,21 @@ class StoryList {
         }
       }
     });
-console.log('addStory', response);
-    // use the new Story to make an instance and return it
+    console.log('addStory', response);
 
-    // add it to story list
-
-    let storyData = response.data.story   
-    console.log('we are returning x here ', storyData)   
     let story = new Story(
-      {storyId: storyData.storyId, 
-        title: storyData.title, 
-        author: storyData.author, 
-        url: storyData.url, 
-        username: storyData.username, 
-        createdAt: storyData.createdAt })
-    //{ storyID, title, author, url, username, createdAt }
+      response.data.story
+    )
+    
 
     console.log('returning the new story', story);
-    storyList.stories.push(story)
-    // UNIMPLEMENTED: complete this function!
-    
+
+    //** Adds story to storylist */
+    this.stories.push(story);
+
+    return story;
   }
-} 
+}
 
 
 /******************************************************************************
@@ -126,13 +119,13 @@ class User {
    */
 
   constructor({
-                username,
-                name,
-                createdAt,
-                favorites = [],
-                ownStories = []
-              },
-              token) {
+    username,
+    name,
+    createdAt,
+    favorites = [],
+    ownStories = []
+  },
+    token) {
     this.username = username;
     this.name = name;
     this.createdAt = createdAt;

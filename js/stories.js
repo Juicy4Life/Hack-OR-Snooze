@@ -50,3 +50,34 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+
+//On submission of form, trigger submission event. 
+$('#submission-form').on("submit", storySubmissionEvent);
+
+//obtains data from story submission form, calls addStory() to create a new story, and adds it to the page. 
+async function storySubmissionEvent (evt) {
+  console.debug("storySubmissionEvent", evt);
+  evt.preventDefault();
+
+  const submissionAuthorName = $("#author-name").val();
+  const submissionTitle = $("#title-name").val();
+  const submissionURL = $("#url-input").val();
+
+  let addedStory = await storyList.addStory(currentUser, {title: submissionTitle, author: submissionAuthorName, url: submissionURL});
+  let $addedStory = generateStoryMarkup(addedStory)
+  $allStoriesList.prepend($addedStory)
+
+  $('#submission-form').hide()
+
+}
+
+//** If a user submits the submission form, hides submission form, gets updated storyList & puts updated storylist on page */
+// $('#submission-form').on("submit", submitStory)
+
+// async function submitStory(evt) {
+//   console.debug("submitStory", evt);
+//   hidePageComponents();
+//   await StoryList.getStories();
+//   putStoriesOnPage();
+// }
