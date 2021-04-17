@@ -223,4 +223,15 @@ class User {
       return null;
     }
   }
+
+  //handles toggles the  favorites list
+  toggleFavorites(story) {
+    console.log('currentFavorites')
+    // access userfaves if story is in array of faves take it out if not put it in
+    //make a post request with updaed array
+    let favorites = currentUser.favorites
+    for(let favorite of favorites)
+    if(story.storyId) 
+
+  }
 }
